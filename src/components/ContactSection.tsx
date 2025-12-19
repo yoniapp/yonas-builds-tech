@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Linkedin, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, Linkedin, Phone, Github } from "lucide-react";
 
 export const ContactSection = () => {
   return (
@@ -62,13 +62,24 @@ export const ContactSection = () => {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/yonas-mulugeta-0937a7129/"
+                href="https://linkedin.com/in/yonas-mulugeta-0937a7129/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 glass-card px-6 py-4 hover:bg-primary/10 transition-colors w-full sm:w-auto justify-center"
               >
                 <Linkedin size={20} className="text-primary" />
                 <span className="font-medium">LinkedIn</span>
+                <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+
+              <a
+                href="https://github.com/Yonas143/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 glass-card px-6 py-4 hover:bg-primary/10 transition-colors w-full sm:w-auto justify-center"
+              >
+                <Github size={20} className="text-primary" />
+                <span className="font-medium">GitHub</span>
                 <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
 
