@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Linkedin } from "lucide-react";
+import { ArrowUpRight, Mail, Linkedin, Phone } from "lucide-react";
 
 export const ContactSection = () => {
   return (
@@ -50,25 +50,34 @@ export const ContactSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4"
             >
               <a
-                href="mailto:hello@yonasmulugeta.com"
+                href="mailto:yoniwin.yW@gmail.com"
                 className="group flex items-center gap-3 glass-card px-6 py-4 hover:bg-primary/10 transition-colors w-full sm:w-auto justify-center"
               >
                 <Mail size={20} className="text-primary" />
-                <span className="font-medium">hello@yonasmulugeta.com</span>
+                <span className="font-medium">yoniwin.yW@gmail.com</span>
                 <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
 
               <a
-                href="https://linkedin.com/in/yonasmulugeta"
+                href="https://www.linkedin.com/in/yonas-mulugeta-0937a7129/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 glass-card px-6 py-4 hover:bg-primary/10 transition-colors w-full sm:w-auto justify-center"
               >
                 <Linkedin size={20} className="text-primary" />
                 <span className="font-medium">LinkedIn</span>
+                <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+
+              <a
+                href="tel:+251939680725"
+                className="group flex items-center gap-3 glass-card px-6 py-4 hover:bg-primary/10 transition-colors w-full sm:w-auto justify-center"
+              >
+                <Phone size={20} className="text-primary" />
+                <span className="font-medium">+251 939 680 725</span>
                 <ArrowUpRight size={16} className="text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
             </motion.div>
