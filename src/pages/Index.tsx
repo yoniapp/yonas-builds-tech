@@ -1,12 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Navbar } from "@/components/Navbar";
+import { BentoGrid } from "@/components/BentoGrid";
+import { HeroCard } from "@/components/HeroCard";
+import { ExperienceCard } from "@/components/ExperienceCard";
+import { StrategyCard } from "@/components/StrategyCard";
+import { SkillsCard } from "@/components/SkillsCard";
+import { FocusCard } from "@/components/FocusCard";
+import { ServicesSection } from "@/components/ServicesSection";
+import { ProjectsSection } from "@/components/ProjectsSection";
+import { ContactSection } from "@/components/ContactSection";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background dark">
+      <Navbar />
+      
+      {/* Hero / Bento Grid Section */}
+      <main id="home" className="pt-32 pb-24">
+        <div className="container mx-auto px-6">
+          <BentoGrid>
+            <HeroCard />
+            <ExperienceCard />
+            <StrategyCard />
+            <SkillsCard />
+            <FocusCard />
+          </BentoGrid>
+        </div>
+      </main>
+
+      <ServicesSection />
+      <ProjectsSection />
+      <ContactSection />
+      <Footer />
     </div>
   );
 };
