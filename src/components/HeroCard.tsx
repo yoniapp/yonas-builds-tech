@@ -2,13 +2,48 @@ import { motion } from "framer-motion";
 import { ArrowRight, Code2, TrendingUp, Layers } from "lucide-react";
 import { BentoCard } from "./BentoGrid";
 import profileImage from "@/assets/yonas-profile.jpg";
+import { useEffect } from "react";
+
+declare global {
+  interface Window {
+    UnicornStudio?: {
+      isInitialized: boolean;
+      init: () => void;
+    };
+  }
+}
 
 export const HeroCard = () => {
+  useEffect(() => {
+    // Load Unicorn Studio script
+    if (!window.UnicornStudio) {
+      window.UnicornStudio = { isInitialized: false, init: () => {} };
+      const script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.5.3/dist/unicornStudio.umd.js";
+      script.onload = () => {
+        if (window.UnicornStudio && !window.UnicornStudio.isInitialized) {
+          window.UnicornStudio.init();
+          window.UnicornStudio.isInitialized = true;
+        }
+      };
+      document.head.appendChild(script);
+    } else if (!window.UnicornStudio.isInitialized) {
+      window.UnicornStudio.init();
+      window.UnicornStudio.isInitialized = true;
+    }
+  }, []);
+
   return (
     <BentoCard className="lg:col-span-2 lg:row-span-2 relative overflow-hidden" delay={0}>
-      {/* Background glow effect */}
-      <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-glow-pulse" />
-      <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-accent/20 rounded-full blur-3xl animate-glow-pulse" />
+      {/* Unicorn Studio Background */}
+      <div 
+        data-us-project="prVWlCmVfm24BbiO3hDF" 
+        className="absolute inset-0 w-full h-full"
+        style={{ minHeight: '100%' }}
+      />
+      
+      {/* Overlay for readability */}
+      <div className="absolute inset-0 bg-background/40" />
       
       <div className="relative z-10 h-full flex flex-col justify-between min-h-[400px]">
         <div className="flex flex-col md:flex-row gap-6 md:gap-8">
