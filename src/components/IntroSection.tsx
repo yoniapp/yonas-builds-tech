@@ -3,46 +3,46 @@ import { ChevronDown } from "lucide-react";
 import { useEffect } from "react";
 import Floating, { FloatingElement } from "@/components/ui/parallax-floating";
 
+import endewerde from "@/assets/projects/endewerde.png";
+import editEducation from "@/assets/projects/edit-education.png";
+import culturalAmbassador from "@/assets/projects/cultural-ambassador.png";
+
 const floatingImages = [
   {
-    url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop",
-    className: "top-[8%] left-[8%] w-32 h-24 md:w-48 md:h-36 rotate-[-6deg]",
+    src: endewerde,
+    alt: "ENDEWERDE - Thoughts Platform",
+    className: "top-[8%] left-[5%] w-48 h-32 md:w-72 md:h-48 rotate-[-6deg]",
     depth: 0.5,
   },
   {
-    url: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop",
-    className: "top-[12%] right-[10%] w-28 h-20 md:w-40 md:h-28 rotate-[8deg]",
+    src: editEducation,
+    alt: "EDIT - Education Platform",
+    className: "top-[10%] right-[5%] w-44 h-28 md:w-64 md:h-40 rotate-[8deg]",
     depth: 1.2,
   },
   {
-    url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop",
-    className: "bottom-[20%] left-[5%] w-24 h-18 md:w-36 md:h-26 rotate-[4deg]",
+    src: culturalAmbassador,
+    alt: "Cultural Ambassador Award",
+    className: "bottom-[18%] left-[8%] w-40 h-26 md:w-56 md:h-36 rotate-[4deg]",
     depth: 0.8,
   },
   {
-    url: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&h=300&fit=crop",
-    className: "bottom-[15%] right-[8%] w-32 h-22 md:w-44 md:h-32 rotate-[-5deg]",
+    src: endewerde,
+    alt: "ENDEWERDE - Thoughts Platform",
+    className: "bottom-[12%] right-[6%] w-44 h-28 md:w-60 md:h-38 rotate-[-5deg]",
     depth: 1.5,
   },
   {
-    url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop",
-    className: "top-[45%] left-[3%] w-20 h-14 md:w-28 md:h-20 rotate-[10deg]",
+    src: editEducation,
+    alt: "EDIT - Education Platform",
+    className: "top-[42%] left-[2%] w-32 h-20 md:w-44 md:h-28 rotate-[10deg]",
     depth: 0.3,
   },
   {
-    url: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop",
-    className: "top-[40%] right-[4%] w-24 h-18 md:w-32 md:h-24 rotate-[-8deg]",
+    src: culturalAmbassador,
+    alt: "Cultural Ambassador Award",
+    className: "top-[38%] right-[3%] w-36 h-22 md:w-48 md:h-30 rotate-[-8deg]",
     depth: 1.0,
-  },
-  {
-    url: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop",
-    className: "bottom-[35%] left-[15%] w-20 h-14 md:w-28 md:h-20 rotate-[6deg]",
-    depth: 0.6,
-  },
-  {
-    url: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=400&h=300&fit=crop",
-    className: "bottom-[40%] right-[15%] w-22 h-16 md:w-32 md:h-22 rotate-[-4deg]",
-    depth: 1.1,
   },
 ];
 
@@ -71,12 +71,12 @@ export const IntroSection = () => {
           {floatingImages.map((image, index) => (
             <FloatingElement key={index} className={image.className} depth={image.depth}>
               <motion.img
-                src={image.url}
-                alt=""
+                src={image.src}
+                alt={image.alt}
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 0.7, scale: 1 }}
+                animate={{ opacity: 0.8, scale: 1 }}
                 transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
-                className="w-full h-full object-cover rounded-xl border border-primary/20 shadow-2xl shadow-primary/10"
+                className="w-full h-full object-cover rounded-xl border border-primary/30 shadow-2xl shadow-primary/20"
               />
             </FloatingElement>
           ))}
