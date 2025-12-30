@@ -1,7 +1,58 @@
-import { motion } from "framer-motion";
+import { motion, stagger, useAnimate } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useEffect } from "react";
+import Floating, { FloatingElement } from "@/components/ui/parallax-floating";
+
+const floatingImages = [
+  {
+    url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop",
+    className: "top-[8%] left-[8%] w-32 h-24 md:w-48 md:h-36 rotate-[-6deg]",
+    depth: 0.5,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop",
+    className: "top-[12%] right-[10%] w-28 h-20 md:w-40 md:h-28 rotate-[8deg]",
+    depth: 1.2,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop",
+    className: "bottom-[20%] left-[5%] w-24 h-18 md:w-36 md:h-26 rotate-[4deg]",
+    depth: 0.8,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&h=300&fit=crop",
+    className: "bottom-[15%] right-[8%] w-32 h-22 md:w-44 md:h-32 rotate-[-5deg]",
+    depth: 1.5,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop",
+    className: "top-[45%] left-[3%] w-20 h-14 md:w-28 md:h-20 rotate-[10deg]",
+    depth: 0.3,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop",
+    className: "top-[40%] right-[4%] w-24 h-18 md:w-32 md:h-24 rotate-[-8deg]",
+    depth: 1.0,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop",
+    className: "bottom-[35%] left-[15%] w-20 h-14 md:w-28 md:h-20 rotate-[6deg]",
+    depth: 0.6,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=400&h=300&fit=crop",
+    className: "bottom-[40%] right-[15%] w-22 h-16 md:w-32 md:h-22 rotate-[-4deg]",
+    depth: 1.1,
+  },
+];
 
 export const IntroSection = () => {
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    animate("img", { opacity: [0, 1] }, { duration: 0.5, delay: stagger(0.1) });
+  }, [animate]);
+
   const scrollToHero = () => {
     const heroSection = document.getElementById("home");
     if (heroSection) {
@@ -14,19 +65,23 @@ export const IntroSection = () => {
       {/* Background gradient effect */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background" />
       
-      {/* Animated glow orbs */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        transition={{ duration: 2 }}
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]"
-      />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.2 }}
-        transition={{ duration: 2, delay: 0.5 }}
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/20 rounded-full blur-[100px]"
-      />
+      {/* Parallax Floating Images */}
+      <Floating className="absolute inset-0 pointer-events-none overflow-hidden" sensitivity={1} easingFactor={0.06}>
+        <div ref={scope}>
+          {floatingImages.map((image, index) => (
+            <FloatingElement key={index} className={image.className} depth={image.depth}>
+              <motion.img
+                src={image.url}
+                alt=""
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 0.7, scale: 1 }}
+                transition={{ delay: 0.2 + index * 0.1, duration: 0.6 }}
+                className="w-full h-full object-cover rounded-xl border border-primary/20 shadow-2xl shadow-primary/10"
+              />
+            </FloatingElement>
+          ))}
+        </div>
+      </Floating>
 
       <div className="relative z-10 text-center px-6">
         <motion.p
