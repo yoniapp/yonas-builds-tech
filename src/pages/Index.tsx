@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/Navbar";
 import { BentoGrid } from "@/components/BentoGrid";
-import { HeroCard } from "@/components/HeroCard";
 import { ExperienceCard } from "@/components/ExperienceCard";
 import { StrategyCard } from "@/components/StrategyCard";
 import { SkillsCard } from "@/components/SkillsCard";
@@ -23,7 +22,7 @@ const Index = () => {
       <main id="home" className="pt-32 pb-24">
         <div className="container mx-auto px-6">
           <BentoGrid>
-            <HeroCard />
+            {/* HeroCard removed */}
             <ExperienceCard />
             <StrategyCard />
             <SkillsCard />
