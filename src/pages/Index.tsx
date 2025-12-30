@@ -9,11 +9,15 @@ import { ServicesSection } from "@/components/ServicesSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
+import { IntroSection } from "@/components/IntroSection";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background dark">
       <Navbar />
+      
+      {/* Full-screen Intro Section */}
+      <IntroSection />
       
       {/* Hero / Bento Grid Section */}
       <main id="home" className="pt-32 pb-24">
