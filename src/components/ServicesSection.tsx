@@ -46,7 +46,7 @@ export const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group glass-card-hover p-8 flex flex-col"
+              className="group glass-card p-8 flex flex-col"
             >
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6`}>
                 <service.icon size={24} className="text-background" />

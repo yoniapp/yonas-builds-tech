@@ -14,7 +14,7 @@ export const BentoCard = ({ children, className = "", delay = 0 }: BentoCardProp
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay, ease: "easeOut" }}
-      className={`glass-card-hover p-6 md:p-8 ${className}`}
+      className={`glass-card p-6 md:p-8 ${className}`}
     >
       {children}
     </motion.div>
