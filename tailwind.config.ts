@@ -16,6 +16,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         display: ['Space Grotesk', 'sans-serif'],
+        overusedGrotesk: ['Space Grotesk', 'sans-serif'], // Added for TextCursorProximityDemo
       },
       colors: {
         border: "hsl(var(--border))",

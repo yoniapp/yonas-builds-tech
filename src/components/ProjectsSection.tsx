@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Smartphone, Heart, Utensils, Palette, Image } from "lucide-react"; // Added Image icon
+import { ArrowUpRight, Smartphone, Heart, Utensils, Palette, Image, Type } from "lucide-react"; // Added Type icon
 
 const projects = [
   {
@@ -41,6 +41,14 @@ const projects = [
     tech: ["React", "Framer Motion", "Tailwind CSS"],
     color: "primary",
     href: "/image-stack-demo", // Link to the new demo page
+  },
+  {
+    icon: Type, // Using Lucide Type icon
+    title: "Text Cursor Proximity Demo",
+    description: "An interactive text effect based on cursor proximity",
+    tech: ["React", "Framer Motion", "Tailwind CSS"],
+    color: "accent",
+    href: "/text-cursor-proximity-demo", // Link to the new demo page
   },
 ];
 
