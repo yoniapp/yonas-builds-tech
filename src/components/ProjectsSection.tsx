@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight, Smartphone, Heart, Utensils, Palette } from "lucide-react";
+import { ArrowUpRight, Smartphone, Heart, Utensils, Palette, Image } from "lucide-react"; // Added Image icon
 
 const projects = [
   {
@@ -8,6 +8,7 @@ const projects = [
     description: "Anti-doom scrolling wellness app",
     tech: ["Flutter", "Node.js", "Express", "MongoDB"],
     color: "primary",
+    href: "#", // Placeholder, update if MindSnap has a dedicated page
   },
   {
     icon: Heart,
@@ -15,6 +16,7 @@ const projects = [
     description: "Africa-focused dating app MVP",
     tech: ["Trust-centered", "Local market focus", "Mobile-first"],
     color: "accent",
+    href: "#", // Placeholder
   },
   {
     icon: Utensils,
@@ -22,6 +24,7 @@ const projects = [
     description: "Social media and digital strategy for a food court brand",
     tech: ["Digital Strategy", "Social Media", "Brand Growth"],
     color: "primary",
+    href: "#", // Placeholder
   },
   {
     icon: Palette,
@@ -29,6 +32,15 @@ const projects = [
     description: "Branding and digital presence project",
     tech: ["Branding", "Digital Presence", "Visual Identity"],
     color: "accent",
+    href: "#", // Placeholder
+  },
+  {
+    icon: Image, // Using Lucide Image icon
+    title: "Vertical Image Stack Demo",
+    description: "An interactive vertical image stack component",
+    tech: ["React", "Framer Motion", "Tailwind CSS"],
+    color: "primary",
+    href: "/image-stack-demo", // Link to the new demo page
   },
 ];
 
@@ -53,8 +65,9 @@ export const ProjectsSection = () => {
 
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.a // Changed div to a for linking
               key={project.title}
+              href={project.href} // Added href
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -86,7 +99,7 @@ export const ProjectsSection = () => {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
