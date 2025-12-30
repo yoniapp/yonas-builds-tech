@@ -3,6 +3,7 @@ import { ArrowRight, Code2, TrendingUp, Layers } from "lucide-react";
 import { BentoCard } from "./BentoGrid";
 import profileImage from "@/assets/yonas-profile.jpg";
 import { useEffect } from "react";
+import Floating, { FloatingElement } from "@/components/ui/parallax-floating";
 
 declare global {
   interface Window {
@@ -12,6 +13,39 @@ declare global {
     };
   }
 }
+
+const floatingImages = [
+  {
+    url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=300&h=200&fit=crop",
+    className: "top-[5%] left-[5%] w-20 h-14 md:w-28 md:h-20",
+    depth: 0.5,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=200&fit=crop",
+    className: "top-[8%] right-[8%] w-16 h-12 md:w-24 md:h-16",
+    depth: 1.2,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=300&h=200&fit=crop",
+    className: "bottom-[15%] left-[3%] w-14 h-10 md:w-20 md:h-14",
+    depth: 0.8,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=300&h=200&fit=crop",
+    className: "bottom-[10%] right-[5%] w-18 h-12 md:w-24 md:h-16",
+    depth: 1.5,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=200&fit=crop",
+    className: "top-[40%] left-[2%] w-12 h-9 md:w-16 md:h-12",
+    depth: 0.3,
+  },
+  {
+    url: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=300&h=200&fit=crop",
+    className: "top-[35%] right-[3%] w-14 h-10 md:w-20 md:h-14",
+    depth: 1.0,
+  },
+];
 
 export const HeroCard = () => {
   useEffect(() => {
@@ -44,6 +78,22 @@ export const HeroCard = () => {
       
       {/* Overlay for readability */}
       <div className="absolute inset-0 bg-background/40" />
+
+      {/* Parallax Floating Images */}
+      <Floating className="absolute inset-0 pointer-events-none" sensitivity={0.8} easingFactor={0.08}>
+        {floatingImages.map((image, index) => (
+          <FloatingElement key={index} className={image.className} depth={image.depth}>
+            <motion.img
+              src={image.url}
+              alt=""
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 0.6, scale: 1 }}
+              transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+              className="w-full h-full object-cover rounded-lg border border-primary/20 shadow-lg shadow-primary/10"
+            />
+          </FloatingElement>
+        ))}
+      </Floating>
       
       <div className="relative z-10 h-full flex flex-col justify-between min-h-[400px]">
         <div className="flex flex-col md:flex-row gap-6 md:gap-8">
