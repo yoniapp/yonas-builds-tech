@@ -1,16 +1,44 @@
 import { motion } from "framer-motion";
-import { Code2, Briefcase, User, Mail, Menu, X } from "lucide-react";
+import { Code2, Briefcase, User, Mail, Menu, X, Layers } from "lucide-react";
 import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const navItems = [
-  { label: "Home", href: "#home", icon: Code2 },
-  { label: "Services", href: "#services", icon: Briefcase },
-  { label: "Projects", href: "#projects", icon: User },
-  { label: "Contact", href: "#contact", icon: Mail },
+  { label: "Home", href: "/", icon: Code2, isRoute: true },
+  { label: "Cases", href: "/cases", icon: Layers, isRoute: true },
+  { label: "Services", href: "/#services", icon: Briefcase },
+  { label: "Contact", href: "/#contact", icon: Mail },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  const renderNavLink = (item: typeof navItems[0]) => {
+    if (item.isRoute) {
+      return (
+        <Link
+          key={item.label}
+          to={item.href}
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+        >
+          <motion.span whileHover={{ y: -2 }} className="inline-block">
+            {item.label}
+          </motion.span>
+        </Link>
+      );
+    }
+    return (
+      <motion.a
+        key={item.label}
+        href={item.href}
+        className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+        whileHover={{ y: -2 }}
+      >
+        {item.label}
+      </motion.a>
+    );
+  };
 
   return (
     <motion.nav
@@ -21,34 +49,27 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <motion.a
-            href="#home"
-            className="font-display text-xl font-bold tracking-tight"
-            whileHover={{ scale: 1.02 }}
-          >
-            <span className="gradient-text">YM</span>
-          </motion.a>
+          <Link to="/">
+            <motion.span
+              className="font-display text-xl font-bold tracking-tight"
+              whileHover={{ scale: 1.02 }}
+            >
+              <span className="gradient-text">YM</span>
+            </motion.span>
+          </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.label}
-                href={item.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-                whileHover={{ y: -2 }}
+            {navItems.map(renderNavLink)}
+            <Link to="/#contact">
+              <motion.span
+                className="glass-card px-5 py-2.5 text-sm font-medium hover:bg-primary/10 transition-colors inline-block"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                {item.label}
-              </motion.a>
-            ))}
-            <motion.a
-              href="#contact"
-              className="glass-card px-5 py-2.5 text-sm font-medium hover:bg-primary/10 transition-colors"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              Let's Talk
-            </motion.a>
+                Let's Talk
+              </motion.span>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -69,16 +90,27 @@ export const Navbar = () => {
             className="md:hidden mt-4 pb-4 border-t border-border/50"
           >
             <div className="flex flex-col gap-4 pt-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-muted-foreground hover:text-foreground transition-colors py-2"
-                >
-                  {item.label}
-                </a>
-              ))}
+              {navItems.map((item) =>
+                item.isRoute ? (
+                  <Link
+                    key={item.label}
+                    to={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                  >
+                    {item.label}
+                  </a>
+                )
+              )}
             </div>
           </motion.div>
         )}
